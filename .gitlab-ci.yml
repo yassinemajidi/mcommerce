@@ -1,0 +1,59 @@
+variables:
+  DOCKER_HUB_USERNAME: "yassinemajidi" 
+  DOCKER_HUB_PASSWORD: "dckr_pat_ajTRfwbxbiYphOl5o7RErdSMQBI"
+
+stages:
+  - build
+  - test
+  - package
+  - publish
+
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/backend-image:latest ./mcommerce-backend
+    - docker build -t $CI_REGISTRY_IMAGE/frontend-image:latest ./mcommerce-frontend
+    - docker push $CI_REGISTRY_IMAGE/backend-image:latest
+    - docker push $CI_REGISTRY_IMAGE/frontend-image:latest
+    - echo "Build successfully!"
+
+test:
+  stage: test
+  image: node:latest
+  script:
+    - cd ./mcommerce-frontend && npm install && npm test
+    - echo "Test successfully!"
+
+package:
+  stage: package
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker pull $CI_REGISTRY_IMAGE/backend-image:latest
+    - docker pull $CI_REGISTRY_IMAGE/frontend-image:latest
+    - docker images -a
+    - docker save $CI_REGISTRY_IMAGE/backend-image:latest > backend-image.tar
+    - docker save $CI_REGISTRY_IMAGE/frontend-image:latest > frontend-image.tar
+
+publish:
+  stage: publish
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+    - docker pull $CI_REGISTRY_IMAGE/backend-image:latest
+    - docker pull $CI_REGISTRY_IMAGE/frontend-image:latest
+    - docker images -a 
+    - docker tag $CI_REGISTRY_IMAGE/backend-image:latest $DOCKER_HUB_USERNAME/backend-image:latest
+    - docker tag $CI_REGISTRY_IMAGE/frontend-image:latest $DOCKER_HUB_USERNAME/frontend-image:latest
+    - docker push $DOCKER_HUB_USERNAME/backend-image:latest
+    - docker push $DOCKER_HUB_USERNAME/frontend-image:latest
+    - echo "Publish successfully!"

@@ -1,0 +1,5 @@
+gitops:
+  manifest_projects:
+  - id: "https://gitlab.com/yassinemidfig/mcomm"
+    paths:
+    - glob: '/**/*.yaml'
