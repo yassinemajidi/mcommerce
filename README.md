@@ -1,5 +1,7 @@
 # mcommerce
 
+<img src="https://raw.githubusercontent.com/yassinemajidi/mcommerce/gif/ezgif-3-d1f41ac063.gif" width="500">
+
 Setting up a DevOps pipeline for a Node.js React.js application
 
 Development and deployment of applications have become essential processes in the ever-evolving digital world. Automation of deployments is a crucial aspect of developing and deploying cloud-native applications.
