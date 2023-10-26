@@ -10,9 +10,9 @@ Development and deployment of applications have become essential processes in th
 
 ### Mcommerce-backend:
 
-I have a Node.js backend for my e-commerce application with a directory structure that includes a "mcommerce-backend" folder. In this folder, I have a "controllers" directory containing two files, "order.js" and "products.js." These files likely contain the logic for managing orders and products in my application.
+I have a Node.js backend for my e-commerce application with a directory structure that includes a "mcommerce-backend" folder. In this folder, I have a "controllers" directory containing two files, "order.js" and "products.js." These files contain the logic for managing orders and products in my application.
 
-I also have a "db" directory that contains three files, "app.js," "connect.js," and "schema.js." These files probably handle database connection and schema for my application. Additionally, there are other files in the root directory of my backend, including a ".dockerignore" file, a ".gitignore" file, a "Dockerfile," a "package-lock.json" file, a "package.json" file, and a "server.js" file.
+I also have a "db" directory that contains three files, "app.js," "connect.js," and "schema.js." These files handle database connection and schema for my application. Additionally, there are other files in the root directory of my backend, including a ".dockerignore" file, a ".gitignore" file, a "Dockerfile," a "package-lock.json" file, a "package.json" file, and a "server.js" file.
 
 The "Dockerfile" is used to define the environment and dependencies needed to run my application in a Docker container. The "package-lock.json" and "package.json" files manage the dependencies of my application. Finally, the "server.js" file is likely the entry point for my main server.
 
@@ -22,7 +22,7 @@ The "Dockerfile" is used to define the environment and dependencies needed to ru
 
 I also have a React interface for my e-commerce application with a directory structure that includes a "mcommerce-frontend" folder. In this folder, there is a "public" directory containing various static assets such as images, a favicon, and a manifest file.
 
-I also have an "src" directory that contains the main source code of my interface. In the "src" directory, there is a "Controllers" directory containing an "ICommander.js" file, which likely handles the logic for controlling front-end components. There is also an "elements" directory containing an "IProductCard.js" file, which probably defines the structure and behavior of a product card component.
+I also have a "src" directory that contains the main source code of my interface. In the "src" directory, there is a "Controllers" directory containing an "ICommander.js" file, which handles the logic for controlling front-end components. There is also an "elements" directory containing an "IProductCard.js" file, which defines the structure and behavior of a product card component.
 
 [Link to Mcommerce-frontend on GitLab](https://gitlab.com/yassinemidfig/mcomm/-/tree/main/mcommerce-frontend)
 
